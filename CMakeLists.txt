@@ -343,6 +343,10 @@ endif()
 if (SOLARIS)
     set(CMAKE_REQUIRED_LIBRARIES socket nsl)
 endif()
+if (QNX)
+    # The socket functions live in libsocket, not libc.
+    list(APPEND CMAKE_REQUIRED_LIBRARIES socket)
+endif()
 
 # Check if _GNU_SOURCE is available.
 if (NOT DEFINED _GNU_SOURCE)
@@ -918,6 +922,10 @@ if (SOLARIS)
     list(APPEND LIB_PLATFORM socket nsl)
 endif()
 
+if (QNX)
+    list(APPEND LIB_PLATFORM socket)
+endif()
+
 source_group("Headers Private"  FILES ${HDR_PRIVATE})
 source_group("Header Compat"    FILES ${HDR_COMPAT})
 source_group("Headers Public"   FILES ${HDR_PUBLIC})
@@ -1453,7 +1461,7 @@ endif()
 #
 
 set(EVENT_INSTALL_CMAKE_DIR
-    "${CMAKE_INSTALL_PREFIX}/lib/cmake/libevent")
+    "lib/cmake/libevent")
 
 export(PACKAGE libevent)
 
