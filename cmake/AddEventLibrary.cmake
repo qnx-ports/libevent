@@ -20,7 +20,7 @@ macro(generate_pkgconfig LIB_NAME)
 
     set(LIBS         "")
     foreach (LIB ${LIB_PLATFORM})
-        set(LIBS "${LIBS} -L${LIB}")
+        set(LIBS "${LIBS} -l${LIB}")
     endforeach()
 
     set(OPENSSL_LIBS "")
