@@ -963,7 +963,7 @@ add_event_library(event_extra
 if (NOT EVENT__DISABLE_OPENSSL)
     add_event_library(event_openssl
         INNER_LIBRARIES event_core
-        OUTER_INCLUDES ${OPENSSL_INCLUDE_DIR}
+        OUTER_INCLUDES "$<BUILD_INTERFACE:${OPENSSL_INCLUDE_DIR}>"
         LIBRARIES ${OPENSSL_LIBRARIES}
         SOURCES ${SRC_OPENSSL})
 endif()
