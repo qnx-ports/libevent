@@ -25,7 +25,7 @@ macro(generate_pkgconfig LIB_NAME)
 
     set(OPENSSL_LIBS "")
     foreach(LIB ${OPENSSL_LIBRARIES})
-        set(OPENSSL_LIBS "${OPENSSL_LIBS} -L${LIB}")
+        set(OPENSSL_LIBS "${OPENSSL_LIBS} ${LIB}")
     endforeach()
 
     configure_file("lib${LIB_NAME}.pc.in" "lib${LIB_NAME}.pc" @ONLY)
